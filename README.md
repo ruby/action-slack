@@ -1,9 +1,38 @@
-# JavaScript Action Template
+# k0kubun/action-slack
 
-This template offers an easy way to get started writing a javascript action with TypeScript compile time support, unit testing with Jest and using the GitHub Actions Toolkit.
+## Usage
 
-## Getting Started
+Set your incoming webhook to `SLACK_WEBHOOK_URL`, and just directly specify its payload.
 
-See the walkthrough located [here](https://github.com/actions/toolkit/blob/master/docs/javascript-action.md).
+```yml
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: k0kubun/action-slack@v1.0.0
+        with:
+          payload: |
+            {
+              "attachments": [{
+                "title": "${{ job.status }}: ${{ github.workflow }} / ${{ matrix.test_task }}",
+                "title_link": "https://github.com/${{ github.repository }}/commit/${{ github.sha }}/checks",
+                "text": "${{ github.repository }}@${{ github.ref }}: <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\nby ${{ github.event.head_commit.committer.name }} on ${{ github.event.head_commit.timestamp }}: ${{ github.event.head_commit.message }}",
+                "color": "danger"
+              }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: failure() && github.event_name == 'push'
+```
 
-In addition to walking your through how to create an action, it also provides strategies for versioning, releasing and referencing your actions.
+## Build
+
+```
+$ npm install
+$ npm run build
+```
+
+## License
+
+MIT License
