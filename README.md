@@ -15,7 +15,7 @@ jobs:
           payload: |
             {
               "attachments": [{
-                "title": "${{ job.status }}: ${{ github.workflow }} / ${{ matrix.test_task }}",
+                "title": "${{ job.status }}: ${{ github.workflow }}",
                 "title_link": "https://github.com/${{ github.repository }}/commit/${{ github.sha }}/checks",
                 "text": "${{ github.repository }}@${{ github.ref }}: <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>",
                 "fields": [{ "value": ${{ toJson(github.event.head_commit.message) }}, "short": false }],
