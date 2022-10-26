@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: ruby/action-slack@v2.0.0
+      - uses: ruby/action-slack@v3.0.0
         with:
           payload: |
             {
