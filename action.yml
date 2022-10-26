@@ -1,6 +1,6 @@
 name: action-slack
 description: Simple Slack notification
-author: k0kubun
+author: ruby
 inputs:
   payload:
     description: Raw Slack incoming webhook payload

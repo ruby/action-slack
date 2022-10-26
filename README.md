@@ -1,4 +1,4 @@
-# k0kubun/action-slack
+# ruby/action-slack
 
 ## Usage
 
@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: k0kubun/action-slack@v1.0.0
+      - uses: ruby/action-slack@v2.0.0
         with:
           payload: |
             {
