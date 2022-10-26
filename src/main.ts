@@ -7,9 +7,9 @@ async function run() {
       throw new Error('SLACK_WEBHOOK_URL is not set');
     }
     const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL);
-    var payload = eval("payload = " + core.getInput('payload'));
+    const payload = JSON.parse(core.getInput('payload'));
 
-    await webhook.send(JSON.parse(JSON.stringify(payload)));
+    await webhook.send(payload);
   } catch (error) {
     core.setFailed(error.message);
   }
