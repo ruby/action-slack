@@ -28,11 +28,17 @@ jobs:
         if: failure() && github.event_name == 'push'
 ```
 
-## Build
+## Releasing
 
-```
+```bash
 $ npm install
 $ npm run build
+# Commit lib/main.js and node_modules
+$ git add .
+$ git commit -m "Version X.Y.Z"
+$ git tag vX.Y.Z
+$ git push origin --tags
+# Do not push the commit to master
 ```
 
 ## License
