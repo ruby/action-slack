@@ -11,7 +11,11 @@ async function run() {
 
     await webhook.send(payload);
   } catch (error) {
-    core.setFailed(error.message);
+    if(error instanceof Error) {
+      core.setFailed(error.message);
+    } else {
+      core.setFailed("Unexpected error");
+    }
   }
 }
 
