@@ -5,5 +5,5 @@ inputs:
   payload:
     description: Raw Slack incoming webhook payload
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'lib/main.js'
